@@ -1,8 +1,23 @@
-import Vue from 'vue'
-import App from './App.vue'
+import VPillButton from "./VPillButton.vue";
 
-Vue.config.productionTip = false
+export function install(Vue) {
+  if (install.installed) return;
+  install.installed = true;
+  Vue.component('VPillButton', VPillButton);
+}
 
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+const plugin = {
+  install
+};
+
+let GlobalVue = null;
+if (typeof window !== 'undefined') {
+  GlobalVue = window.Vue;
+} else if (typeof global !== 'undefined') {
+  GlobalVue = global.Vue;
+}
+if (GlobalVue) {
+  GlobalVue.use(plugin);
+}
+
+export default VPillButton;
