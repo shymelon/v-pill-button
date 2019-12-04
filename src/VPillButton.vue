@@ -2,7 +2,7 @@
     <div class="wrapper">
         <button
                 class="btn clickable secondary-button"
-                :class="small? 'small': medium?  'medium' : large? 'large': ''"
+                :class="small? 'small': medium?  'medium' : large? 'large': 'medium'"
                 :style="{backgroundColor: color}"
                 @click="$emit('onLeftButtonClick')">
             <slot name="left"></slot>
@@ -11,7 +11,7 @@
                 :disabled="disabled"
                 class="btn clickable primary-button"
                 :style="{backgroundColor: color}"
-                :class="small? 'small': medium? 'medium' : large? 'large': ''"
+                :class="small? 'small': medium? 'medium' : large? 'large': 'medium'"
                 @click="$emit('onRightButtonClick')">
             <slot name="right"></slot>
         </button>
@@ -32,10 +32,6 @@
                 default: false,
                 required: false,
             },
-            width: {
-                type: String,
-                required: false,
-            },
             small: Boolean,
             medium: Boolean,
             large: Boolean,
@@ -44,34 +40,42 @@
 </script>
 
 <style scoped>
-    .btn{
+
+    .wrapper {
+        white-space: nowrap;
+        display: flex;
+    }
+
+    .btn {
         position: relative;
         overflow: hidden;
-        background-color: #ddd;
         border: none;
-        color: black;
         text-align: center;
         text-decoration: none;
-        display: inline-block;
         margin: 4px 2px;
         cursor: pointer;
     }
-    button:disabled{
-        -webkit-user-select: text;  /* Chrome 49+ */
-        -moz-user-select: text;     /* Firefox 43+ */
-        -ms-user-select: text;      /* No support yet */
-        user-select: text;          /* Likely future */
+
+    .btn:disabled {
+        -webkit-user-select: text;
+        -moz-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
         cursor: text;
     }
-    .small{
-        padding: 5px;
+
+    .small {
+        padding: 6px;
     }
-    .medium{
+
+    .medium {
         padding: 7px 10px;
     }
-    .large{
+
+    .large {
         padding: 10px 30px;
     }
+
     .clickable::after {
         display: none;
         content: "";
@@ -90,11 +94,11 @@
         animation: ripple 1s;
         opacity: 0;
     }
+
     .clickable:focus:not(:active)::after {
         display: block;
     }
-    .clickable{
-    }
+
     .dismiss{
         background-color: #eeeeee;
         opacity: 0.5;
@@ -103,20 +107,25 @@
         transform: scale(1);
         transition: all .3s;
     }
-    .btn:focus {outline:none;}
-    .btn::-moz-focus-inner {border:0;}
+
+    .btn:focus {
+        outline:none;
+    }
+
+    .btn::-moz-focus-inner {
+        border:0;
+    }
+
     .secondary-button{
         border-bottom-left-radius: 16px;
         border-top-left-radius: 16px;
     }
+
     .primary-button{
         border-bottom-right-radius: 16px;
         border-top-right-radius: 16px;
     }
 
-    .wrapper{
-        white-space: nowrap;
-    }
     @keyframes ripple {
         from {
             opacity: 1;

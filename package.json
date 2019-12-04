@@ -1,6 +1,11 @@
 {
   "name": "v-pill-button",
-  "version": "0.1.1",
+  "version": "0.1.2",
+  "description": "Simple and customizable double pill button for Vue",
+  "keywords": ["Vue","button","pill","component"],
+  "license": "MIT",
+  "private": false,
+  "homepage": "https://github.com/shymelon/v-pill-button",
   "main": "dist/v-pill-button.umd.js",
   "module": "dist/v-pill-button.esm.js",
   "unpkg": "dist/v-pill-button.min.js",
